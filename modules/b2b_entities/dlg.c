@@ -3300,8 +3300,10 @@ b2b_route:
 				b2b_ev = B2B_EVENT_UPDATE;
 				b2b_run_cb(dlg, hash_index, etype, B2BCB_TRIGGER_EVENT, b2b_ev,
 					&storage, serialize_backend);
-			} else
+			} else {
 				b2b_ev = -1;
+				lock_get(&htable[hash_index].lock);
+			}
 		} else if (b2b_ev == B2B_EVENT_CREATE) {
 			lock_get(&htable[hash_index].lock);
 
@@ -3311,8 +3313,10 @@ b2b_route:
 
 				if (b2be_db_mode == WRITE_THROUGH)
 					b2be_db_insert(dlg, etype);
-			} else
+			} else {
 				b2b_ev = -1;
+				lock_get(&htable[hash_index].lock);
+			}
 		}
 	}
 

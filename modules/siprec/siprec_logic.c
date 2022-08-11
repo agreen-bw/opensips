@@ -265,7 +265,6 @@ static int srec_b2b_notify(struct sip_msg *msg, str *key, int type, void *param,
 	if (!(ss->flags & SIPREC_DLG_CBS)) {
 		if (srec_register_callbacks(ss) < 0) {
 			LM_ERR("cannot register callback for terminating session\n");
-			SIPREC_UNREF(ss);
 			goto no_recording;
 		}
 

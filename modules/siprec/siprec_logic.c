@@ -255,10 +255,12 @@ static int srec_b2b_notify(struct sip_msg *msg, str *key, int type,
 		return -1;
 	}
 	/* for now we only receive replies from SRS */
-	if (type != B2B_REPLY)
+  /*  if (type != B2B_REPLY)
 		return srec_b2b_req(msg, ss);
-
+*/
 	LM_DBG("received b2b reply with code %d\n", msg->REPLY_STATUS);
+	LM_INFO("received b2b reply with code %d\n", msg->REPLY_STATUS);
+	LM_INFO("received b2b reply with code %d and %d \n", msg->REQ_METHOD, msg->REQ_METHOD_S);
 
 	ret = 0;
 	/* check if the reply was successful */
